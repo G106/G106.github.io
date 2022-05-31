@@ -41,3 +41,4 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 
 0531
 need to begin writing a blog everyday
+LLVM IR是基于静态单赋值的, 并且提供了类型安全性,底层操作性,灵活性,因此能够清楚表达绝大多数高级语言.
