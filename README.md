@@ -42,3 +42,5 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 0531
 need to begin writing a blog everyday
 LLVM IR是基于静态单赋值的, 并且提供了类型安全性,底层操作性,灵活性,因此能够清楚表达绝大多数高级语言.
+0601
+与优化器相似, LLVM代码生成器(code generator)也采用了模块的设计离你那, 它将代码生成问题分解为多个独立Pass: 指令选择,寄存器分配,指令调度,代码布局优化,代码发射. 同样, 也有许多内建的Pass, 它们默认执行, 但用户可以选择只执行其中一部分.
