@@ -73,7 +73,8 @@ Both the left and right subtrees must also be binary search trees.
 判断给定二叉树是否是一个有效的二叉搜索树, 何谓二叉搜索树呢, 就是左边节点的值永远小于根节点, 右边节点的值永远大于根节点.
 思路:
 用中序遍历, "左中右", 将节点的值保存在一个顺序容器里(vector), 然后每次往容器里insert时就判断这个值是否小于等于容器末尾, 如果小于等于则是非有效二叉搜索树.
-    class Solution {
+'''c++
+class Solution {
 public:
     vector<int> vec;
     bool isValidBST(TreeNode* root) {
@@ -93,3 +94,4 @@ public:
         return true;
     }
 };
+'''
