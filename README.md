@@ -58,3 +58,38 @@ C++11的新特性：占位符std::placeholders
 std::is_placeholder 用于判断T是否为占位符，它有一个成员变量value。如果T是placeholder类型，value的值为1代表 _1，2代表 _2；如果T不是，则value为0
 ## 3. std::is_bind_expression
 判断是否是bind表达式，有value成员，返回值是true或false
+
+#0802
+##leetcode 98 Validate Binary Search Tree
+Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+A valid BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+
+题意:
+判断给定二叉树是否是一个有效的二叉搜索树, 何谓二叉搜索树呢, 就是左边节点的值永远小于根节点, 右边节点的值永远大于根节点.
+思路:
+用中序遍历, "左中右", 将节点的值保存在一个顺序容器里(vector), 然后每次往容器里insert时就判断这个值是否小于等于容器末尾, 如果小于等于则是非有效二叉搜索树.
+class Solution {
+public:
+    vector<int> vec;
+    bool isValidBST(TreeNode* root) {
+        if (root == nullptr) {
+            return true;
+        }
+        if (isValidBST(root->left) == false) {
+            return false;
+        }
+        if (vec.size() >= 1 && root->val <= vec[vec.size() - 1]) {
+            return false;
+        }
+        vec.push_back(root->val);
+        if (isValidBST(root->right) == false) {
+            return false;
+        };
+        return true;
+    }
+};
