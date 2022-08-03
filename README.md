@@ -95,3 +95,36 @@ public:
     }
 };
 '''
+#0803
+##leetcode 116 Populating Next Right Pointers in Each Node
+##You are given a perfect binary tree where all leaves are on the same level, and every parent has two children. The binary tree has the following definition:
+
+struct Node {
+  int val;
+  Node *left;
+  Node *right;
+  Node *next;
+}
+Populate each next pointer to point to its next right node. If there is no next right node, the next pointer should be set to NULL.
+
+Initially, all next pointers are set to NULL.
+##题意及思路
+找到二叉树中每一个节点右边的节点, 将右边节点的指针赋值给此节点的next
+##答案如下
+class Solution {
+public:
+    Node* connect(Node* root) {
+        if (root == nullptr) {
+            return nullptr;
+        }
+        if (root->left != nullptr) {
+            root->left->next = root->right;
+        }
+        if (root->right != nullptr && root->next != nullptr) {
+            root->right->next = root->next->left;
+        }
+        connect(root->left);
+        connect(root->right);
+        return root;
+    }
+};
